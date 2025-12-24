@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AI Health Helper</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="AI Health Helper - Sağlık Asistanı" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/svg+xml" href="images/main_logo_transparan.ico">
+
+    <script src="app.js" defer></script>
+    <script src="translations.js" defer></script>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]
+            }
+        });
+    </script>
+</head>
+
+<body class="aihh-body" data-current-lang="tr">
+
+    <div id="aihh-loading" class="aihh-loading" aria-live="polite" aria-label="Sayfa yükleniyor">
+        <div class="aihh-loading-container">
+            <div class="aihh-loading-logo">
+                <div class="aihh-logo-spinner">
+                    <img src="images/main_logo_transparan.png" alt="AI Health Helper" class="aihh-loading-img" />
+                    <div class="aihh-spinner-ring"></div>
+                    <div class="aihh-spinner-ring"></div>
+                    <div class="aihh-spinner-ring"></div>
+                </div>
+            </div>
+
+            <div class="aihh-loading-progress">
+                <div class="aihh-progress-track">
+                    <div class="aihh-progress-fill" id="loadingProgress"></div>
+                </div>
+                <div class="aihh-loading-stats">
+                    <span class="aihh-loading-percentage" id="loadingPercentage">0%</span>
+                    <span class="aihh-loading-text" data-i18n="loading.text">Yükleniyor...</span>
+                </div>
+            </div>
+
+            <div class="aihh-loading-messages">
+                <div class="aihh-message-slider">
+                    <div class="aihh-message active" data-i18n="loading.message1">
+                        Sağlık asistanınız hazırlanıyor...
+                    </div>
+                    <div class="aihh-message" data-i18n="loading.message2">
+                        AI modelleri yükleniyor...
+                    </div>
+                    <div class="aihh-message" data-i18n="loading.message3">
+                        Semptom analiz modülü hazırlanıyor...
+                    </div>
+                    <div class="aihh-message" data-i18n="loading.message4">
+                        Neredeyse hazırız!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="aihh-header">
+        <nav class="aihh-nav">
+            <div class="aihh-nav-container">
+                <a href="#home" class="aihh-logo">
+                    <span data-i18n="nav.logoText">AI Health Helper</span>
+                </a>
+
+                <div class="aihh-nav-center">
+                    <div class="aihh-nav-links">
+                        <a href="#features" class="aihh-nav-link" data-i18n="nav.features">
+                            Özellikler
+                        </a>
+                        <a href="#how-it-works" class="aihh-nav-link" data-i18n="nav.howItWorks">
+                            Nasıl Çalışır?
+                        </a>
+                        <a href="#faq" class="aihh-nav-link" data-i18n="nav.faq">
+                            SSS
+                        </a>
+                        <a href="#symptom-records" class="aihh-nav-link" data-i18n="nav.records">
+                            Kayıtlarım
+                        </a>
+                    </div>
+                </div>
+
+                <div class="aihh-nav-right">
+                    <div class="aihh-lang-switch" aria-label="Dil seçimi">
+                        <button type="button" class="aihh-lang-btn aihh-lang-btn--active" data-lang="tr"
+                            aria-label="Türkçe">
+                            TR
+                        </button>
+                        <button type="button" class="aihh-lang-btn" data-lang="en" aria-label="English">
+                            EN
+                        </button>
+                    </div>
+
+                    <a href="#contact" class="aihh-nav-cta" data-i18n="nav.contact">
+                        Early Access
+                    </a>
+
+                    <button class="aihh-mobile-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+                        <span class="toggle-bar"></span>
+                        <span class="toggle-bar"></span>
+                        <span class="toggle-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="aihh-mobile-nav" aria-hidden="true">
+                <div class="aihh-mobile-nav-content">
+                    <a href="#features" class="aihh-mobile-nav-link" data-i18n="nav.features">
+                        <span class="nav-icon">⚡</span>
+                        Özellikler
+                    </a>
+                    <a href="#how-it-works" class="aihh-mobile-nav-link" data-i18n="nav.howItWorks">
+                        <span class="nav-icon">🔧</span>
+                        Nasıl Çalışır?
+                    </a>
+                    <a href="#faq" class="aihh-mobile-nav-link" data-i18n="nav.faq">
+                        <span class="nav-icon">❓</span>
+                        SSS
+                    </a>
+                    <a href="#symptom-records" class="aihh-mobile-nav-link" data-i18n="nav.records">
+                        <span class="nav-icon">📝</span>
+                        Kayıtlarım
+                    </a>
+                    <div class="aihh-mobile-actions">
+                        <a href="#contact" class="aihh-btn-primary" data-i18n="nav.contact">
+                            Early Access
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="aihh-scroll-progress" aria-hidden="true">
+            <div class="aihh-progress-bar"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="aihh-hero">
+            <div class="aihh-container">
+                <div class="aihh-hero-grid">
+                    <article>
+                        <h1 class="aihh-hero-title">
+                            <span data-i18n="hero.titlePrefix">Semptomlarını anlat,</span>
+                            <span class="aihh-gradient-text">AI Health Helper</span>
+                            <span data-i18n="hero.titleSuffix">sana eğitim amaçlı rehberlik etsin.</span>
+                        </h1>
+
+                        <p class="aihh-hero-subtitle" data-i18n="hero.subtitle">
+                            AI Health Helper; semptom analizi, acil durum rehberi, cilt analizi ve wellness
+                            önerilerini tek bir uygulamada birleştirir. Amaç, kullanıcıları bilinçlendirmek
+                            ve doğru uzmana başvurmaları için yol göstermektir –
+                            <strong>asla doktor yerine geçmez.</strong>
+                        </p>
+
+                        <div class="aihh-hero-badges">
+                            <span class="aihh-hero-badge" data-i18n="hero.badge.symptom">⚕️ Semptom Analizi</span>
+                            <span class="aihh-hero-badge" data-i18n="hero.badge.emergency">🚑 Acil Durum / İlk
+                                Yardım</span>
+                            <span class="aihh-hero-badge" data-i18n="hero.badge.skin">📸 Cilt Görüntü Analizi</span>
+                            <span class="aihh-hero-badge" data-i18n="hero.badge.mental">🧠 Genel &amp; Ruh
+                                Sağlığı</span>
+                        </div>
+
+                        <div class="aihh-hero-actions">
+                            <button type="button" class="aihh-btn-primary" id="viewProjectButton"
+                                data-i18n="hero.btn.pdf">
+                                Projeyi Göster
+                            </button>
+                            <button type="button" class="aihh-btn-ghost" id="scrollToFeaturesButton"
+                                data-i18n="hero.btn.features">
+                                Özelliklere göz at
+                            </button>
+                        </div>
+
+                        <p class="aihh-hero-note" id="heroNote" data-i18n="hero.note">
+                            Uygulama yalnızca eğitim ve bilgilendirme amaçlıdır. Acil veya ciddi
+                            durumlarda mutlaka bir sağlık profesyoneline ve 112 acil hattına başvurulmalıdır.
+                        </p>
+                    </article>
+
+                    <aside class="aihh-hero-media" aria-label="Uygulama önizleme">
+                        <div class="aihh-hero-card">
+                            <img src="images/aihh-hero-phone.png" 
+                                alt="Uygulama ana ekranı önizlemesi" class="aihh-hero-phone" />
+
+                            <div class="aihh-hero-stats">
+                                <div class="aihh-hero-stat">
+                                    <strong data-i18n="hero.stat1.title">Semptom Kaydı</strong>
+                                    <span data-i18n="hero.stat1.text">Belirtilerini adım adım kaydet</span>
+                                </div>
+                                <div class="aihh-hero-stat">
+                                    <strong data-i18n="hero.stat2.title">AI Yorumları</strong>
+                                    <span data-i18n="hero.stat2.text">Olası açıklamalar ve risk uyarıları</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="aihh-section aihh-section-alt">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="features.kicker">ÖZELLİKLER</p>
+                    <h2 class="aihh-section-title" data-i18n="features.title">Tek uygulamada onlarca sağlık modülü</h2>
+                    <p class="aihh-section-desc" data-i18n="features.desc">
+                        AI Health Helper; günlük sağlık sorularından acil durumda ne yapman gerektiğine
+                        kadar birçok senaryoda eğitim amaçlı rehberlik sunar.
+                    </p>
+                </header>
+
+                <div class="aihh-features-grid">
+                    <article class="aihh-feature-card">
+                        <div class="aihh-feature-icon-wrap">
+                      
+                        </div> 
+                        <h3 class="aihh-feature-title" data-i18n="features.f1.title">
+                            Semptom Analizi &amp; Olası Nedenler
+                        </h3>
+                        <p class="aihh-feature-text" data-i18n="features.f1.text">
+                            Kullanıcı semptomlarını (süre, şiddet, eşlik eden belirtiler) adım adım girer;
+                            yapay zekâ, genel tıbbi bilgilerden yararlanarak olası açıklamaları ve dikkat
+                            edilmesi gereken risk işaretlerini özetler.
+                        </p>
+                        <div class="aihh-feature-tags">
+                            <span class="aihh-tag" data-i18n="features.f1.tag1">Ön değerlendirme</span>
+                            <span class="aihh-tag" data-i18n="features.f1.tag2">Triyaj bilinci</span>
+                            <span class="aihh-tag" data-i18n="features.f1.tag3">Uzman önerisi</span>
+                        </div>
+                    </article>
+
+                    <article class="aihh-feature-card">
+                        <div class="aihh-feature-icon-wrap">
+                          
+                        </div>
+                        <h3 class="aihh-feature-title" data-i18n="features.f2.title">
+                            Acil Durum &amp; İlk Yardım Rehberi
+                        </h3>
+                        <p class="aihh-feature-text" data-i18n="features.f2.text">
+                            Göğüs ağrısı, nefes darlığı, ani bilinç kaybı gibi riskli belirtilerde; 112
+                            çağrısı, temel ilk yardım adımları ve yapılmaması gerekenler adım adım
+                            gösterilir.
+                        </p>
+                        <div class="aihh-feature-tags">
+                            <span class="aihh-tag" data-i18n="features.f2.tag1">112 yönlendirmesi</span>
+                            <span class="aihh-tag" data-i18n="features.f2.tag2">Adım adım rehber</span>
+                        </div>
+                    </article>
+
+                    <article class="aihh-feature-card">
+                        <div class="aihh-feature-icon-wrap">
+                          
+                        </div>
+                        <h3 class="aihh-feature-title" data-i18n="features.f3.title">
+                            Fotoğrafla Cilt Değerlendirmesi
+                        </h3>
+                        <p class="aihh-feature-text" data-i18n="features.f3.text">
+                            Kullanıcı, cilt lezyonunun veya döküntünün fotoğrafını yükler; sistem, görseli
+                            analiz ederek genel risk faktörleri ve hangi uzmanlık alanına
+                            başvurulabileceği hakkında bilgilendirici geri bildirim sağlar.
+                        </p>
+                        <div class="aihh-feature-tags">
+                            <span class="aihh-tag" data-i18n="features.f3.tag1">Dermatoloji odağı</span>
+                            <span class="aihh-tag" data-i18n="features.f3.tag2">Görsel analiz</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="aihh-table-wrapper">
+                    <table class="aihh-symptom-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="table.head.severity">Şiddet</th>
+                                <th data-i18n="table.head.description">Açıklama</th>
+                                <th data-i18n="table.head.action">Önerilen Aksiyon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-i18n="table.row1.col1">Düşük</td>
+                                <td data-i18n="table.row1.col2">
+                                    Hafif, kısa süreli, günlük yaşamı çok bozmayan belirtiler
+                                </td>
+                                <td data-i18n="table.row1.col3">
+                                    Evde takip, gerekirse aile hekimi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="table.row2.col1">Orta</td>
+                                <td data-i18n="table.row2.col2">
+                                    Tekrarlayan veya birkaç gün süren, rahatsızlık veren belirtiler
+                                </td>
+                                <td data-i18n="table.row2.col3">
+                                    Randevu alarak muayene
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="table.row3.col1">Yüksek</td>
+                                <td data-i18n="table.row3.col2">
+                                    Şiddetli, ani başlayan veya ciddi hastalık şüphesi uyandıran belirtiler
+                                </td>
+                                <td data-i18n="table.row3.col3">
+                                    En kısa sürede hastane / acil servis
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="aihh-section">
+            <div class="aihh-container">
+                <header class="aihh-section-header" style="text-align: left; margin-bottom: 1.4rem;">
+                    <p class="aihh-section-kicker" data-i18n="how.kicker">NASIL ÇALIŞIR?</p>
+                    <h2 class="aihh-section-title" data-i18n="how.title">
+                        4 adımda AI Health Helper deneyimi
+                    </h2>
+                    <p class="aihh-section-desc" style="margin: 0;" data-i18n="how.desc">
+                        Kullanıcı, semptomlarını ve sağlık geçmişini yapay zekâya anlatır; sistem bunları
+                        klinik rehberler ve genel tıbbi bilgi çerçevesinde yorumlayarak kullanıcıya
+                        <strong>bilgilendirici</strong> geri bildirim sunar.
+                    </p>
+                </header>
+
+                <div class="aihh-how-grid">
+                    <article class="aihh-step-list" aria-label="Kullanım adımları">
+                        <div class="aihh-step">
+                            <div class="aihh-step-number">1</div>
+                            <div>
+                                <h3 class="aihh-step-title" data-i18n="how.step1.title">
+                                    Semptomlarını ve öykünü gir
+                                </h3>
+                                <p class="aihh-step-text" data-i18n="how.step1.text">
+                                    Belirtiler ne zamandır var, şiddeti nasıl, daha önce teşhis konmuş bir
+                                    hastalığın var mı? Sistem, bu bilgileri triyağa benzer bir mantıkla toplar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="aihh-step">
+                            <div class="aihh-step-number">2</div>
+                            <div>
+                                <h3 class="aihh-step-title" data-i18n="how.step2.title">
+                                    AI ile ön değerlendirme al
+                                </h3>
+                                <p class="aihh-step-text" data-i18n="how.step2.text">
+                                    Yapay zekâ; seninle benzer örneklerden ve klinik literatürden beslenerek
+                                    olası açıklamaları, hangi durumda acil başvuru gerektiğini ve hangi
+                                    branşlara görünmenin mantıklı olabileceğini özetler.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="aihh-step">
+                            <div class="aihh-step-number">3</div>
+                            <div>
+                                <h3 class="aihh-step-title" data-i18n="how.step3.title">
+                                    Uyarılar &amp; risk işaretlerini gör
+                                </h3>
+                                <p class="aihh-step-text" data-i18n="how.step3.text">
+                                    Yüksek riskli belirtiler (şiddetli göğüs ağrısı, ani felç bulguları vb.)
+                                    olduğunda sistem, kullanıcıyı gecikmeden acil servise ve 112'ye yönlendirir.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="aihh-step">
+                            <div class="aihh-step-number">4</div>
+                            <div>
+                                <h3 class="aihh-step-title" data-i18n="how.step4.title">
+                                    Uzun vadede sağlık verilerini takip et
+                                </h3>
+                                <p class="aihh-step-text" data-i18n="how.step4.text">
+                                    Tekrarlayan semptomları, ilaç kullanımını ve ruh hâli dalgalanmalarını
+                                    kayıt altında tutarak, doktor görüşmelerine daha hazırlanmış gitmeni sağlar.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="aihh-how-illustration">
+                        <img src="images/how-it-works-flow.png" alt="Uygulama işleyiş akışı" 
+                            class="aihh-how-img" />
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- regexp demo section -->
+        <section class="aihh-section aihh-section-alt">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="regexp.kicker">REGEXP TEST</p>
+                    <h2 class="aihh-section-title" data-i18n="regexp.title">E-posta ve Telefon Doğrulama</h2>
+                    <p class="aihh-section-desc" data-i18n="regexp.desc">
+                        Aşağıdaki formda e-posta ve telefon numarası doğrulama testi yapabilirsiniz.
+                    </p>
+                </header>
+
+                <div class="aihh-regexp-demo">
+                    <form id="regexpForm">
+                        <div class="aihh-form-group">
+                            <label for="testEmail" data-i18n="regexp.emailLabel">E-posta Adresi</label>
+                            <input type="text" id="testEmail" name="testEmail" 
+                                   placeholder="ornek@mail.com" data-i18n="regexp.emailPlaceholder" />
+                            <button type="button" id="validateEmailBtn" class="aihh-btn-primary" 
+                                    data-i18n="regexp.validateBtn">Doğrula</button>
+                            <div id="emailResult" class="aihh-validation-result"></div>
+                        </div>
+
+                        <div class="aihh-form-group">
+                            <label for="testPhone" data-i18n="regexp.phoneLabel">Telefon Numarası</label>
+                            <input type="text" id="testPhone" name="testPhone" 
+                                   placeholder="5551234567" data-i18n="regexp.phonePlaceholder" />
+                            <button type="button" id="validatePhoneBtn" class="aihh-btn-primary" 
+                                    data-i18n="regexp.validateBtn">Doğrula</button>
+                            <div id="phoneResult" class="aihh-validation-result"></div>
+                        </div>
+
+                        <div class="aihh-form-group">
+                            <label for="customRegex" data-i18n="regexp.customLabel">Özel Regex Pattern</label>
+                            <input type="text" id="customRegex" name="customRegex" 
+                                   placeholder="/^[a-zA-Z]+$/" data-i18n="regexp.customPlaceholder" />
+                            <input type="text" id="customTest" name="customTest" 
+                                   placeholder="Test metni" data-i18n="regexp.customTestPlaceholder" />
+                            <button type="button" id="validateCustomBtn" class="aihh-btn-primary" 
+                                    data-i18n="regexp.validateCustomBtn">Test Et</button>
+                            <div id="customResult" class="aihh-validation-result"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- symptom records section - template kullanımı -->
+        <section id="symptom-records" class="aihh-section">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="records.kicker">SEMPTOM KAYITLARI</p>
+                    <h2 class="aihh-section-title" data-i18n="records.title">Semptom Kayıtlarınız</h2>
+                    <p class="aihh-section-desc" data-i18n="records.desc">
+                        Semptomlarınızı kaydedin ve geçmiş kayıtlarınızı görüntüleyin.
+                    </p>
+                </header>
+
+                <!-- template kullanımı -->
+                <template id="symptomRecordTemplate">
+                    <div class="aihh-record-card" data-id="">
+                        <div class="aihh-record-header">
+                            <h3 class="aihh-record-title"></h3>
+                            <div class="aihh-record-actions">
+                                <button class="aihh-btn-icon edit-record" title="Düzenle">
+                                    <svg width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                                    </svg>
+                                </button>
+                                <button class="aihh-btn-icon delete-record" title="Sil">
+                                    <svg width="16" height="16" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="aihh-record-body">
+                            <p class="aihh-record-symptoms"></p>
+                            <div class="aihh-record-meta">
+                                <span class="aihh-record-severity"></span>
+                                <span class="aihh-record-date"></span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="aihh-records-container">
+                    <div class="aihh-records-form">
+                        <form id="symptomForm">
+                            <div class="aihh-form-group">
+                                <label for="symptomDescription" data-i18n="records.symptomLabel">Semptom Açıklaması</label>
+                                <textarea id="symptomDescription" name="symptomDescription" required 
+                                          minlength="10" maxlength="500"
+                                          placeholder="Semptomlarınızı detaylı şekilde açıklayın..."
+                                          data-i18n="records.symptomPlaceholder"></textarea>
+                            </div>
+
+                            <div class="aihh-form-row">
+                                <div class="aihh-form-group">
+                                    <label for="symptomSeverity" data-i18n="records.severityLabel">Şiddet Seviyesi</label>
+                                    <select id="symptomSeverity" name="symptomSeverity" required>
+                                        <option value="" data-i18n="records.selectOption">Seçiniz</option>
+                                        <option value="low" data-i18n="records.severityLow">Düşük</option>
+                                        <option value="medium" data-i18n="records.severityMedium">Orta</option>
+                                        <option value="high" data-i18n="records.severityHigh">Yüksek</option>
+                                    </select>
+                                </div>
+
+                                <div class="aihh-form-group">
+                                    <label for="symptomDate" data-i18n="records.dateLabel">Tarih</label>
+                                    <input type="date" id="symptomDate" name="symptomDate" required />
+                                </div>
+                            </div>
+
+                            <div class="aihh-form-actions">
+                                <button type="submit" class="aihh-btn-primary" data-i18n="records.saveBtn">
+                                    Kaydet
+                                </button>
+                                <button type="button" id="clearStorageBtn" class="aihh-btn-ghost" 
+                                        data-i18n="records.clearBtn">
+                                    Tüm Kayıtları Temizle
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="aihh-records-list">
+                        <h3 data-i18n="records.listTitle">Kayıtlı Semptomlar</h3>
+                        <div id="recordsList" class="aihh-records-grid">
+                        </div>
+                        <div id="emptyRecordsMessage" class="aihh-empty-message" 
+                             data-i18n="records.emptyMessage">
+                            Henüz kayıtlı semptomunuz yok.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- event delegation demo -->
+        <section class="aihh-section aihh-section-alt">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="events.kicker">EVENT DELEGATION</p>
+                    <h2 class="aihh-section-title" data-i18n="events.title">Event Delegation Demo</h2>
+                    <p class="aihh-section-desc" data-i18n="events.desc">
+                        Aşağıdaki butonlara tıklayarak event delegation örneğini görebilirsiniz.
+                    </p>
+                </header>
+
+                <div class="aihh-events-demo">
+                    <div id="eventDelegationContainer" class="aihh-buttons-container">
+                        <!-- Buttons will be added dynamically -->
+                    </div>
+                    <div class="aihh-events-controls">
+                        <button id="addEventButton" class="aihh-btn-primary" data-i18n="events.addBtn">
+                            Yeni Buton Ekle
+                        </button>
+                        <button id="removeEventButton" class="aihh-btn-ghost" data-i18n="events.removeBtn">
+                            Son Butonu Sil
+                        </button>
+                    </div>
+                    <div id="eventLog" class="aihh-event-log">
+                        <h4 data-i18n="events.logTitle">Event Log</h4>
+                        <div id="logMessages"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="aihh-section">
+            <div class="aihh-container">
+                <article class="aihh-safety-box">
+                    <strong><span data-i18n="safety.title">Önemli Uyarı:</span></strong>
+                    <span data-i18n="safety.text">
+                        AI Health Helper bir doktor, hastane veya acil servis değildir. Gerçek bir teşhis
+                        koymaz, tedavi önermez ve reçete yazmaz.
+                    </span>
+                    <ul class="aihh-safety-list">
+                        <li data-i18n="safety.item1">
+                            Ciddi veya ani başlayan şikâyetlerde mutlaka bir sağlık profesyoneline başvur.
+                        </li>
+                        <li data-i18n="safety.item2">
+                            Riskli belirtilerde (göğüs ağrısı, nefes darlığı, bilinç kaybı vb.) 112 acil
+                            hattını ara.
+                        </li>
+                        <li data-i18n="safety.item3">
+                            Uygulama yalnızca bilgilendirici ve eğitim amaçlıdır; tıbbi kararlarını tek
+                            başına buna dayandırma.
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="faq" class="aihh-section aihh-section-alt">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="faq.kicker">SSS</p>
+                    <h2 class="aihh-section-title" data-i18n="faq.title">Sık Sorulan Sorular</h2>
+                </header>
+
+                <div class="aihh-faq-grid">
+                    <article>
+                        <details>
+                            <summary data-i18n="faq.1.q">
+                                AI Health Helper doktor mu, resmi teşhis koyuyor mu?
+                            </summary>
+                            <p data-i18n="faq.1.a">
+                                Hayır. AI Health Helper hiçbir şekilde doktor, hastane veya klinik değildir.
+                                Resmî teşhis koymaz, tedavi kararı vermez. Semptomlarının olası açıklamalarını
+                                ve hangi durumda doktora başvurmanın önemli olduğunu anlaman için bir
+                                <strong>eğitim aracı</strong> olarak tasarlanmıştır.
+                            </p>
+                        </details>
+                        <details>
+                            <summary data-i18n="faq.2.q">
+                                Verilerim nasıl saklanıyor, gizlilik nasıl korunuyor?
+                            </summary>
+                            <p data-i18n="faq.2.a">
+                                Sistem; semptom kayıtları, fotoğraflar ve notlar gibi verileri güvenli bir
+                                biçimde saklamayı hedefler. Kullanıcı, istediği zaman verilerini silebilir
+                                veya paylaşım izinlerini kısıtlayabilir. Amaç, gereksiz veri toplamadan
+                                kişiselleştirilmiş sağlık rehberliği sunmaktır.
+                            </p>
+                        </details>
+                        <details>
+                            <summary data-i18n="faq.3.q">
+                                Uygulama hangi modülleri içeriyor?
+                            </summary>
+                            <p data-i18n="faq.3.a">
+                                Genel sağlık, ruh sağlığı, kadın ve çocuk sağlığı, cilt analizi, ilaç ve
+                                hastalıklar hakkında temel bilgiler, ilk yardım ve acil durum yönlendirmeleri,
+                                wellness (uyku, beslenme, egzersiz, stres yönetimi) gibi modüller yer alır.
+                            </p>
+                        </details>
+                    </article>
+
+                    <article>
+                        <details>
+                            <summary data-i18n="faq.4.q">
+                                Acil durumda sadece bu uygulamaya güvenebilir miyim?
+                            </summary>
+                            <p data-i18n="faq.4.a">
+                                Hayır. Acil durumlarda
+                                <strong>öncelik her zaman 112 ve en yakın sağlık kuruluşudur</strong>.
+                                AI Health Helper, sana ilk yardım adımlarını ve risk işaretlerini hatırlatan bir
+                                rehber olabilir ama asla acil servisin yerini alamaz.
+                            </p>
+                        </details>
+                        <details>
+                            <summary data-i18n="faq.5.q">
+                                Uygulama hangi dilleri destekleyecek?
+                            </summary>
+                            <p data-i18n="faq.5.a">
+                                Proje; Türkçe ve İngilizce başta olmak üzere çok dilli yapı için tasarlanmaktadır.
+                                Amaç, farklı ülkelerden kullanıcıların da aynı yapay zekâ destekli sağlık
+                                rehberliğinden faydalanabilmesidir.
+                            </p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="aihh-section">
+            <div class="aihh-container">
+                <header class="aihh-section-header">
+                    <p class="aihh-section-kicker" data-i18n="contact.kicker">İLETİŞİM</p>
+                    <h2 class="aihh-section-title" data-i18n="contact.title">
+                        Proje hakkında geri bildirim veya iş birliği talebi bırak
+                    </h2>
+                </header>
+
+                <div class="aihh-contact-grid">
+                    <article class="aihh-contact-card">
+                        <p data-i18n="contact.info1">
+                            AI Health Helper şu anda geliştirme / proje aşamasındadır. Akademik iş birlikleri,
+                            klinik mentorluk veya yatırım görüşmeleri için aşağıdaki formu doldurabilir ya da
+                            doğrudan e-posta ile ulaşabilirsiniz:
+                        </p>
+                        <p style="margin-top: 0.4rem;">
+                            <span data-i18n="contact.info2Label">E-posta:</span>
+                            <a href="mailto:info@aihealthhelper.app" class="aihh-contact-mail">
+                                info@aihealthhelper.app
+                            </a>
+                        </p>
+
+                    </article>
+
+                    <article aria-label="Early access başvuru formu">
+                        <form id="earlyAccessForm" novalidate>
+                            <div class="aihh-form-group">
+                                <label for="fullName" data-i18n="form.fullName.label">Ad Soyad</label>
+                                <input type="text" id="fullName" name="fullName" required minlength="3"
+                                    placeholder="Örn: Hasan İnciler" />
+
+                            </div>
+
+                            <div class="aihh-form-group">
+                                <label for="email" data-i18n="form.email.label">E-posta</label>
+                                <input type="email" id="email" name="email" required placeholder="ornek@mail.com" />
+                            </div>
+
+                            <div class="aihh-form-group">
+                                <label for="age" data-i18n="form.age.label">Yaş</label>
+                                <input type="number" id="age" name="age" min="12" max="120" required placeholder="18" />
+                            </div>
+
+                            <div class="aihh-form-group">
+                                <label for="userType" data-i18n="form.userType.label">
+                                    Kendinizi nasıl tanımlarsınız?
+                                </label>
+                                <select id="userType" name="userType" required>
+                                    <option value="" data-i18n="form.userType.option.empty">
+                                        Seçiniz...
+                                    </option>
+                                    <option value="student" data-i18n="form.userType.option.student">
+                                        Öğrenci
+                                    </option>
+                                    <option value="developer" data-i18n="form.userType.option.developer">
+                                        Geliştirici
+                                    </option>
+
+                                    <option value="investor" data-i18n="form.userType.option.investor">
+                                        Yatırımcı
+                                    </option>
+                                    <option value="other" data-i18n="form.userType.option.other">
+                                        Diğer
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="aihh-form-group">
+                                <label for="message" data-i18n="form.message.label">
+                                    Kısa mesajınız
+                                </label>
+                                <textarea id="message" name="message" required minlength="10"
+                                    placeholder="Proje hakkında düşünceleriniz veya iş birliği talebiniz..."></textarea>
+                            </div>
+
+                            <button type="submit" class="aihh-btn-primary aihh-btn-form" data-i18n="form.submit">
+                                Gönder
+                            </button>
+
+                            <p id="formFeedback" class="aihh-form-feedback"></p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<div class="aihh-chat-widget">
+    <button id="chatToggleBtn" class="aihh-chat-toggle-btn" aria-label="AI Asistan ile sohbet et">
+      <span class="chat-icon">
+    <img src="images/main_logo_transparan.png" alt="AI Asistan"
+         onerror="this.style.display='none'; this.parentNode.innerText='AI';">
+    </span>
+    <span class="chat-label">AI Asistan</span>
+
+    </button>
+
+    <div id="chatWindow" class="aihh-chat-window hidden">
+        <header class="aihh-chat-header">
+        <div class="chat-header-info">
+        <div class="chat-avatar">
+        <img src="images/main_logo_transparan.png" alt="Sağlık Asistanı Logo">
+        </div>
+        <div>
+        <h4>Sağlık Asistanı</h4>
+        <span class="status-dot"></span> <small>Çevrimiçi</small>
+        </div>
+        </div>
+            <button id="closeChatBtn" class="aihh-btn-icon close-chat" aria-label="Sohbeti kapat">✕</button>
+        </header>
+
+        <div id="chatMessages" class="aihh-chat-messages">
+            <div class="message ai-message">
+                Merhaba! Ben AI Health Helper asistanıyım. Semptomlarınız veya sağlık hakkında merak ettikleriniz konusunda eğitim amaçlı yardımcı olabilirim.
+            </div>
+        </div>
+
+        <form id="chatForm" class="aihh-chat-input-area">
+            <input type="text" id="userMessageInput" placeholder="Bir soru sorun..." autocomplete="off">
+            <button type="submit" id="sendMessageBtn" class="send-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+    </div>
+
+    <footer class="aihh-footer">
+        <div class="aihh-footer-inner">
+            <span data-i18n="footer.left">
+                © 2025 AI Health Helper · Eğitim amaçlı sağlık asistanı
+            </span>
+            <span data-i18n="footer.right">
+                Developed by Hasan İnciler
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

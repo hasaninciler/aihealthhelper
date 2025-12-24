@@ -1,0 +1,2117 @@
+:root {
+    --bg: #050816;
+    --bg-alt: #080d1f;
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.1);
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #1f2933;
+    --radius-lg: 18px;
+    --radius-xl: 26px;
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.45);
+    --max-width: 1120px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Roboto", sans-serif;
+}
+
+body.aihh-body {
+    background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.aihh-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* NAVBAR */
+header.aihh-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(18px);
+    background: linear-gradient(to bottom,
+            rgba(15, 23, 42, 0.95),
+            rgba(15, 23, 42, 0.5),
+            transparent);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+nav.aihh-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.aihh-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+
+.aihh-logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.aihh-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.aihh-nav-links {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.aihh-nav-links a {
+    color: var(--muted);
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.aihh-nav-links a:hover {
+    color: #f9fafb;
+    background: rgba(148, 163, 184, 0.15);
+}
+
+.aihh-nav-cta {
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+    color: #f9fafb !important;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(37, 99, 235, 0.35);
+}
+
+/* Dil switch */
+.aihh-lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 999px;
+    padding: 0.15rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.aihh-lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.75rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.aihh-lang-btn--active {
+    background: linear-gradient(135deg, #2563eb, #a855f7);
+    color: #f9fafb;
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 768px) {
+    .aihh-nav-links {
+        display: none;
+    }
+
+    .aihh-nav-right {
+        gap: 0.5rem;
+    }
+}
+
+/* NAVBAR GÜNCELLEMELERİ */
+.aihh-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.98) 0%,
+    rgba(15, 23, 42, 0.92) 50%,
+    rgba(15, 23, 42, 0.85) 100%
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  transition: all 0.3s ease;
+}
+
+.aihh-header.scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(25px);
+  border-bottom-color: rgba(148, 163, 184, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.aihh-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Logo */
+.aihh-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+.aihh-logo:hover {
+  transform: translateY(-1px);
+}
+
+.aihh-logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.aihh-logo:hover img {
+  transform: scale(1.05);
+}
+
+/* Center Navigation */
+.aihh-nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.aihh-nav-links {
+  display: flex;
+  gap: 0.2rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 16px;
+  padding: 0.3rem;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.aihh-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.aihh-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aihh-nav-link:hover::before {
+  left: 100%;
+}
+
+.aihh-nav-link:hover {
+  color: #f9fafb;
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.aihh-nav-link.active {
+  color: #f9fafb;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.nav-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Right Section */
+.aihh-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Language Switch */
+.aihh-lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 12px;
+  padding: 0.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.aihh-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aihh-lang-btn:hover {
+  color: #f9fafb;
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.aihh-lang-btn--active {
+  background: linear-gradient(135deg, #2563eb, #8b5cf6);
+  color: #f9fafb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.lang-flag {
+  font-size: 0.9rem;
+}
+
+/* CTA Button */
+.aihh-nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #22c55e);
+  color: #f9fafb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.aihh-nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.aihh-nav-cta:hover::before {
+  left: 100%;
+}
+
+.aihh-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+}
+
+.cta-icon {
+  font-size: 1rem;
+}
+
+/* Mobile Toggle */
+.aihh-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aihh-mobile-toggle:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.toggle-bar {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.aihh-mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.aihh-mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.aihh-mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation */
+.aihh-mobile-nav {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(30px);
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.aihh-mobile-nav[aria-hidden="false"] {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.aihh-mobile-nav-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.aihh-mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.aihh-mobile-nav-link:hover,
+.aihh-mobile-nav-link.active {
+  color: #f9fafb;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.aihh-mobile-actions {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  margin-top: 1rem;
+}
+
+/* Progress Bar */
+.aihh-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.aihh-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .aihh-nav-center {
+    display: none;
+  }
+  
+  .aihh-mobile-toggle {
+    display: flex;
+  }
+}
+
+/* LOADING SCREEN STYLES */
+.aihh-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+
+.aihh-loading.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.aihh-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Logo Spinner */
+.aihh-loading-logo {
+  position: relative;
+}
+
+.aihh-logo-spinner {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.aihh-loading-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+.aihh-spinner-ring {
+  position: absolute;
+  border: 3px solid transparent;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.aihh-spinner-ring:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  top: 10px;
+  left: 10px;
+  border-top-color: #8b5cf6;
+  animation-duration: 1.5s;
+  animation-direction: reverse;
+}
+
+.aihh-spinner-ring:nth-child(3) {
+  width: 120px;
+  height: 120px;
+  top: 0;
+  left: 0;
+  border-top-color: #10b981;
+  animation-duration: 2.5s;
+}
+
+.aihh-spinner-ring:nth-child(4) {
+  width: 80px;
+  height: 80px;
+  top: 20px;
+  left: 20px;
+  border-top-color: #f59e0b;
+  animation-duration: 1.8s;
+  animation-direction: reverse;
+}
+
+/* Progress Bar */
+.aihh-loading-progress {
+  width: 100%;
+  max-width: 300px;
+}
+
+.aihh-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.aihh-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #10b981, #8b5cf6);
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.aihh-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.aihh-loading-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.aihh-loading-percentage {
+  font-weight: 600;
+  color: #3b82f6;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Loading Messages */
+.aihh-loading-messages {
+  height: 60px;
+  width: 100%;
+  position: relative;
+}
+
+.aihh-message-slider {
+  position: relative;
+  height: 100%;
+}
+
+.aihh-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.aihh-message.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading finish animation */
+.aihh-loading-finish .aihh-loading-img {
+  animation: finishPulse 0.6s ease-out;
+}
+
+@keyframes finishPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aihh-loading-container {
+    gap: 2rem;
+  }
+  
+  .aihh-logo-spinner {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .aihh-loading-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .aihh-spinner-ring:nth-child(2) {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .aihh-spinner-ring:nth-child(3) {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .aihh-spinner-ring:nth-child(4) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aihh-nav-container {
+    padding: 0.7rem 1rem;
+  }
+  
+  .aihh-lang-switch {
+    display: none;
+  }
+  
+  .aihh-nav-cta .cta-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .aihh-logo span {
+    display: none;
+  }
+  
+  .aihh-nav-cta span:not(.cta-icon) {
+    display: none;
+  }
+  
+  .aihh-nav-cta {
+    padding: 0.6rem;
+    border-radius: 10px;
+  }
+}
+
+/* MAIN / HERO */
+main {
+    display: block;
+}
+
+.aihh-hero {
+    padding: 3.5rem 0 3rem;
+}
+
+.aihh-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .aihh-hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.aihh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    margin-bottom: 0.75rem;
+}
+
+.aihh-pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #22c55e;
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.14);
+}
+
+.aihh-hero-title {
+    font-size: clamp(2.2rem, 3.4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+}
+
+.aihh-hero-title span {
+    margin-right: 0.3rem;
+}
+
+.aihh-gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #a855f7, #f97316);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.aihh-hero-subtitle {
+    font-size: 0.98rem;
+    color: var(--muted);
+    max-width: 34rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+}
+
+.aihh-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.aihh-hero-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    color: #cbd5f5;
+}
+
+.aihh-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.aihh-btn-primary {
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #22c55e);
+    color: #f9fafb;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.4);
+}
+
+.aihh-btn-ghost {
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    color: var(--muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.aihh-hero-note {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.aihh-hero-media {
+    position: relative;
+}
+
+.aihh-hero-card {
+    background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
+    border-radius: var(--radius-xl);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.aihh-hero-phone {
+    width: 100%;
+    border-radius: 22px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.65);
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.aihh-hero-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+    gap: 1rem;
+}
+
+.aihh-hero-stat strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #e5e7eb;
+}
+
+/* GENEL SECTION */
+section.aihh-section {
+    padding: 2.8rem 0 2.3rem;
+}
+
+.aihh-section-alt {
+    background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+}
+
+.aihh-section-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.aihh-section-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+}
+
+.aihh-section-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.aihh-section-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+section#features,
+section#how-it-works,
+section#faq,
+section#contact {
+    scroll-margin-top: 80px;
+}
+
+/* FEATURES */
+.aihh-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+}
+
+@media (max-width: 900px) {
+    .aihh-features-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+article.aihh-feature-card {
+    background: radial-gradient(circle at top,
+            rgba(37, 99, 235, 0.16),
+            rgba(15, 23, 42, 0.98));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 1rem;
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+
+
+.aihh-feature-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.aihh-feature-text {
+    font-size: 0.86rem;
+    color: var(--muted);
+}
+
+.aihh-feature-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+}
+
+.aihh-tag {
+    font-size: 0.7rem;
+    padding: 0.22rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: #cbd5f5;
+}
+
+/* TABLE */
+.aihh-table-wrapper {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+table.aihh-symptom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+}
+
+.aihh-symptom-table th,
+.aihh-symptom-table td {
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+}
+
+.aihh-symptom-table th {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.aihh-symptom-table caption {
+    caption-side: top;
+    text-align: left;
+    margin-bottom: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--muted);
+}
+
+/* HOW IT WORKS */
+.aihh-how-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+    .aihh-how-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.aihh-step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.aihh-step {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+
+.aihh-step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: #cbd5f5;
+    background: rgba(15, 23, 42, 0.9);
+    margin-top: 0.2rem;
+}
+
+.aihh-step-title {
+    font-size: 0.96rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.aihh-step-text {
+    font-size: 0.84rem;
+    color: var(--muted);
+}
+
+.aihh-how-illustration {
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: radial-gradient(circle at top, #111827, #020617);
+    padding: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.aihh-how-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-bottom: 0.8rem;
+}
+
+.aihh-how-caption {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+}
+
+.aihh-tips-list {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-left: 1.1rem;
+}
+
+/* SAFETY */
+.aihh-safety-box {
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(248, 113, 113, 0.6);
+    background: radial-gradient(circle at top left,
+            rgba(248, 113, 113, 0.16),
+            rgba(15, 23, 42, 0.95));
+    padding: 1rem 1.1rem;
+    font-size: 0.82rem;
+    color: #fecaca;
+}
+
+.aihh-safety-box strong {
+    color: #fee2e2;
+}
+
+.aihh-safety-list {
+    margin-top: 0.4rem;
+    padding-left: 1rem;
+    color: #fecaca;
+}
+
+.aihh-safety-list li {
+    margin-bottom: 0.15rem;
+}
+
+/* FAQ */
+.aihh-faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .aihh-faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+details {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.86rem;
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: "▾";
+    float: right;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+details[open] summary::after {
+    content: "▴";
+}
+
+details p {
+    margin-top: 0.45rem;
+    color: var(--muted);
+}
+
+/* CONTACT + FORM */
+.aihh-contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .aihh-contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.aihh-contact-card {
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: rgba(15, 23, 42, 0.96);
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+}
+
+.aihh-contact-mail {
+    font-weight: 600;
+    color: #bfdbfe;
+}
+
+form#earlyAccessForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    font-size: 0.85rem;
+}
+
+.aihh-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.aihh-form-group label {
+    color: #e5e7eb;
+    font-size: 0.8rem;
+}
+
+.aihh-form-group input,
+.aihh-form-group select,
+.aihh-form-group textarea {
+    background: #020617;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    padding: 0.45rem 0.6rem;
+    color: #e5e7eb;
+    font-size: 0.85rem;
+}
+
+.aihh-form-group input:focus,
+.aihh-form-group select:focus,
+.aihh-form-group textarea:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.4);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.aihh-form-helper {
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.aihh-form-feedback {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+}
+
+.aihh-form-feedback--error {
+    color: #fecaca;
+}
+
+.aihh-form-feedback--success {
+    color: #bbf7d0;
+}
+
+.aihh-btn-form {
+    margin-top: 0.4rem;
+    align-self: flex-start;
+}
+
+/* FOOTER */
+footer.aihh-footer {
+    border-top: 1px solid rgba(31, 41, 55, 0.8);
+    padding: 1.2rem 0 1.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 1rem;
+}
+
+.aihh-footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+/* ============ YENİ EKLENEN CSS KODLARI (ESKİ STİLİ BOZMAZ) ============ */
+
+/* RegExp Demo Section */
+.aihh-regexp-demo {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.aihh-regexp-demo .aihh-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.aihh-regexp-demo label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #e5e7eb;
+}
+
+.aihh-regexp-demo input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.aihh-regexp-demo input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4);
+}
+
+.aihh-validation-result {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.aihh-validation-result.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #86efac;
+}
+
+.aihh-validation-result.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fecaca;
+}
+
+/* Symptom Records Section */
+.aihh-records-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+    .aihh-records-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.aihh-records-form {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.aihh-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.aihh-records-form .aihh-form-group {
+    margin-bottom: 1rem;
+}
+
+.aihh-records-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #e5e7eb;
+}
+
+.aihh-records-form input,
+.aihh-records-form select,
+.aihh-records-form textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.aihh-records-form input:focus,
+.aihh-records-form select:focus,
+.aihh-records-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4);
+}
+
+.aihh-records-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.aihh-records-list {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.aihh-records-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #e5e7eb;
+}
+
+.aihh-records-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Kayıt kartları */
+.aihh-record-card {
+    background: radial-gradient(circle at top,
+            rgba(37, 99, 235, 0.16),
+            rgba(15, 23, 42, 0.98));
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.aihh-record-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.7);
+}
+
+.aihh-record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.aihh-record-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.aihh-record-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.aihh-btn-icon {
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.aihh-btn-icon:hover {
+    background: rgba(148, 163, 184, 0.1);
+    color: #e5e7eb;
+}
+
+.aihh-record-body {
+    font-size: 0.85rem;
+}
+
+.aihh-record-symptoms {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.aihh-record-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.aihh-record-severity {
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.aihh-record-severity.low {
+    background: rgba(16, 185, 129, 0.1);
+    color: #86efac;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.aihh-record-severity.medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.aihh-record-severity.high {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fecaca;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.aihh-record-date {
+    color: var(--muted);
+}
+
+.aihh-empty-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border: 2px dashed rgba(148, 163, 184, 0.3);
+    border-radius: var(--radius-lg);
+    margin-top: 1rem;
+}
+
+/* Event Delegation Demo */
+.aihh-events-demo {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.aihh-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    min-height: 80px;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.event-button {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.event-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.aihh-events-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.aihh-event-log {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.aihh-event-log h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #e5e7eb;
+}
+
+#logMessages {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+.log-entry {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #3b82f6;
+    line-height: 1.4;
+}
+
+/* Scrollbar düzenlemeleri */
+.aihh-records-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.aihh-records-grid::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 3px;
+}
+
+.aihh-records-grid::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 3px;
+}
+
+.aihh-records-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.8);
+}
+
+/* Navbar'a records linki için */
+.aihh-nav-link[data-i18n="nav.records"] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 900px) {
+    .aihh-records-form {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    .aihh-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .aihh-form-actions {
+        flex-direction: column;
+    }
+    
+    .aihh-btn-primary,
+    .aihh-btn-ghost {
+        width: 100%;
+    }
+}
+
+/* Hero section için padding düzenlemesi (fixed navbar için) */
+.aihh-hero {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+}
+
+/* Tüm section'lar için scroll-margin ekle */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* Form actions için stil */
+.aihh-form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Date input için özel stil */
+input[type="date"] {
+    font-family: inherit;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+    cursor: pointer;
+}
+
+/* Template gizleme */
+template {
+    display: none;
+}
+
+/* SVG ikonlar için */
+.aihh-btn-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Section arkaplanı için düzenleme */
+.aihh-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.aihh-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+}
+
+/* Button grupları için responsive */
+@media (max-width: 768px) {
+    .aihh-events-controls,
+    .aihh-form-actions {
+        flex-direction: column;
+    }
+    
+    .aihh-btn-primary,
+    .aihh-btn-ghost {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Loading sonrası animasyon */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    .aihh-section {
+    animation: slideInUp 0.6s ease-out;
+    }
+    /* ============ MODERN CHAT WIDGET (PREMIUM DESIGN) ============ */
+
+    /* Widget Konumlandırma */
+    .aihh-chat-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        font-family: 'Montserrat', system-ui, sans-serif; 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .aihh-chat-toggle-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2563eb, #22c55e);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Buton üzerindeki parlama efekti */
+    .aihh-chat-toggle-btn::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+        opacity: 0;
+        transform: scale(0.5);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .aihh-chat-toggle-btn:hover::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .aihh-chat-toggle-btn:hover {
+        transform: scale(1.1) rotate(-5deg);
+        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
+    }
+
+.chat-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+    transition: transform 0.3s ease;
+}
+
+    .chat-icon img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+    }
+    .aihh-chat-toggle-btn:hover .chat-icon {
+        transform: rotate(5deg) scale(1.1);
+    }
+
+    .chat-label {
+        display: none;
+    }
+
+    .aihh-chat-toggle-btn.hidden {
+        display: none;
+    }
+
+    .aihh-chat-window {
+        width: 380px;
+        height: 600px;
+        max-height: 80vh;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(20px); 
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        transform-origin: bottom right;
+        animation: chatPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        margin-bottom: 20px;
+    }
+
+    .aihh-chat-window.hidden {
+        display: none;
+    }
+
+    @keyframes chatPopIn {
+        from { opacity: 0; transform: scale(0.9) translateY(20px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* 3. Header (Başlık) */
+    .aihh-chat-header {
+        padding: 1.2rem;
+        background: linear-gradient(to right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+    .chat-header-info h4 {
+        font-size: 1rem;
+        color: #f8fafc;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .status-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #22c55e;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #22c55e;
+        margin-right: 5px;
+    }
+
+    .close-chat {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 8px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+
+    .close-chat:hover {
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+    }
+
+    .aihh-chat-messages {
+        flex: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    }
+
+    .aihh-chat-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+    .aihh-chat-messages::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .aihh-chat-messages::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.3);
+        border-radius: 10px;
+    }
+    .aihh-chat-messages::-webkit-scrollbar-thumb:hover {
+        background: rgba(148, 163, 184, 0.5);
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 1rem 1.2rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        position: relative;
+        animation: messageSlideIn 0.3s ease-out;
+    }
+
+    @keyframes messageSlideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ai-message {
+        align-self: flex-start;
+        background: rgba(30, 41, 59, 0.8);
+        color: #e2e8f0;
+        border-radius: 18px 18px 18px 4px; 
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .user-message {
+        align-self: flex-end;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: #ffffff;
+        border-radius: 18px 18px 4px 18px; 
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+    }
+
+    .error-message {
+        align-self: center;
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        color: #fca5a5;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .aihh-chat-input-area {
+        padding: 1rem;
+        background: rgba(15, 23, 42, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+    }
+
+    .aihh-chat-input-area input {
+        flex: 1;
+        background: rgba(2, 6, 23, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 12px;
+        padding: 0.8rem 1rem;
+        color: #fff;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+    }
+
+    .aihh-chat-input-area input::placeholder {
+        color: #64748b;
+    }
+
+    .aihh-chat-input-area input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        background: rgba(2, 6, 23, 0.8);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .send-btn {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .send-btn:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    }
+
+    .send-btn svg {
+        width: 20px;
+        height: 20px;
+        margin-left: 2px; 
+    }
+
+
+    .typing-indicator {
+        padding: 12px 16px;
+        background: rgba(30, 41, 59, 0.6);
+        border-radius: 18px;
+        display: flex;
+        gap: 5px;
+        width: fit-content;
+        align-self: flex-start;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .typing-dot {
+        width: 6px;
+        height: 6px;
+        background: #94a3b8;
+        border-radius: 50%;
+        animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typingBounce {
+        0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Mobil Uyumluluk */
+    @media (max-width: 480px) {
+        .aihh-chat-window {
+            width: 100%;
+            height: 100%;
+            max-height: 100vh;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            z-index: 10000;
+        }
+        
+        .aihh-chat-toggle-btn {
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+        }
+
+        .aihh-chat-messages {
+            padding-bottom: 2rem; 
+        }
+    }
